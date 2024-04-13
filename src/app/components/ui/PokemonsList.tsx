@@ -16,23 +16,22 @@ const PokemonsList = () => {
       {
         error && <>Error: {error}</> ||
         !filtered.length && <>No Pokemons</> ||
-        <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"}>
+        <InfiniteScroll
+          dataLength={filtered.length} //This is important field to render the next data
+          next={fetchNext}
+          hasMore={true}
+          loader={!!page && <h4>Loading...</h4>}
+          endMessage={
+            <p style={{textAlign: 'center'}}>
+              <b>Yay! You have seen it all</b>
+            </p>
+          }
+          className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 pt-8"}
+        >
           {filtered.map((p, i) => (<PokemonListItem key={i} item={p}/>))}
-        </div>
+        </InfiniteScroll>
       }
 
-      {!listFiltered && <InfiniteScroll
-        dataLength={filtered.length} //This is important field to render the next data
-        next={fetchNext}
-        hasMore={true}
-        loader={!!page && <h4>Loading...</h4>}
-        endMessage={
-          <p style={{textAlign: 'center'}}>
-            <b>Yay! You have seen it all</b>
-          </p>
-        }
-      />
-      }
     </>
 
   )
