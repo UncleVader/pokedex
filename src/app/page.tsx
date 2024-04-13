@@ -1,4 +1,5 @@
 import SearchForm from "@/app/components/ui/SearchForm";
+import PokemonsList from "@/app/components/ui/PokemonsList";
 
 export default function Home() {
   return (
@@ -7,6 +8,9 @@ export default function Home() {
         <h1>Pokedex</h1>
         <SearchForm />
       </div>
+
+      <PokemonsList />
     </main>
   );
 }
+
