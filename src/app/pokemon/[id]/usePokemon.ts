@@ -21,7 +21,7 @@ const usePokemon = (id:number) => {
         if (r.error) {
           setError(r.error)
         }
-        setData(r)
+        setData(r.data as IRawPokemon)
       })
       .finally(() => {
         setIsLoading(false)

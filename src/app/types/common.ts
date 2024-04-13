@@ -20,10 +20,15 @@ interface IPStat {
 
 export interface IRawPokemon {
   name: string;
-  abilities?: IPAbility[];
-  stats?: IPStat[];
-  sprites: Record<string, string>
+  abilities: IPAbility[];
+  stats: IPStat[];
+  types: IPType[];
+  sprites: {
+    front_default: string
+  }
+  error?: string;
 }
+
 
 export interface IPokemon {
   id: number;
@@ -33,4 +38,10 @@ export interface IPokemon {
   avatar: string;
   color: string;
   textBlack: boolean;
+  error?: string;
+}
+
+export type TJSONResponse = {
+  data?: Array<IPokemon|IRawPokemon|{error:string}> | Record<string, unknown>
+  error?: string
 }
