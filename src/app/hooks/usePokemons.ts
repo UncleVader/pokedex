@@ -19,8 +19,8 @@ const usePokemons = () => {
         if (r.error) {
           setError(r.error)
         } else if (Array.isArray(r.data)) {
-          const pokarray = r.data.filter(d => !d?.error) as IPokemon[]
-          setPokemons(pokemons.concat(pokarray))
+          const pokArray = r.data.filter(d => !d?.error) as IPokemon[]
+          setPokemons(pokemons.concat(pokArray))
         }
       })
       .finally(() => {

@@ -7,8 +7,7 @@ import Loader from "@/app/components/ui/Loader";
 
 const PokemonsList = () => {
   const {fetchNext} = usePokemons()
-  const {isLoading, error, filtered, pokemons, page} = useStore()
-  const listFiltered = pokemons.length !== filtered.length
+  const {isLoading, error, filtered, page} = useStore()
 
   return (
     <>
@@ -17,7 +16,7 @@ const PokemonsList = () => {
         error && <>Error: {error}</> ||
         !filtered.length && <>No Pokemons</> ||
         <InfiniteScroll
-          dataLength={filtered.length} //This is important field to render the next data
+          dataLength={filtered.length}
           next={fetchNext}
           hasMore={true}
           loader={!!page && <h4>Loading...</h4>}
@@ -26,7 +25,7 @@ const PokemonsList = () => {
               <b>Yay! You have seen it all</b>
             </p>
           }
-          className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 pt-8"}
+          className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 pt-8"}
         >
           {filtered.map((p, i) => (<PokemonListItem key={i} item={p}/>))}
         </InfiniteScroll>

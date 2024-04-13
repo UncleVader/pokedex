@@ -25,7 +25,7 @@ const PokemonListItem: FC<IProps> = ({item}) => {
           "bg-type-" + item.color
         )
       }
-      onClick={()=>gotoPokemon()}
+      onClick={gotoPokemon}
     >
       <IdBadge id={item.id}/>
       <div className={cn(
