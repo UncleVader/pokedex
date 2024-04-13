@@ -1,0 +1,11 @@
+@import '@radix-ui/colors/black-alpha.css';
+
+h1 {
+  @apply text-4xl text-black-a9 font-bold;
+}
+
+input {
+  @apply w-[200px] inline-flex items-center justify-center rounded-md
+  px-2.5 text-black-a8 h-[35px] bg-white
+  shadow-black-a2 focus:shadow-input-focus;
+}
