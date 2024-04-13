@@ -12,7 +12,7 @@ export default function Page({params: {id}}: {
         isLoading && <>Loading...</> ||
         error && <>Error: {error}</> ||
         data &&
-        <div className={"border rounded-xl p-6 w-[500px] mx-auto flex"}>
+        <div className={"border rounded-xl p-6 w-[500px] max-w-full mx-auto flex flex-wrap sm:flex-nowrap"}>
           <div className="flex flex-col">
             <h1 className={"mb-4"}>{data.name}</h1>
 

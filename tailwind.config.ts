@@ -8,7 +8,7 @@ const config: Config = {
   safelist: [
     'bg-type-water-500',
     {
-      pattern: /bg-type-(grass|fire|water|bug|normal|default).?/,
+      pattern: /bg-type-.+/,
     }
   ],
   theme: {
@@ -17,9 +17,13 @@ const config: Config = {
         "white-100": "rgba(255,255,255,.2)",
         "type-grass": "var(--grass)",
         "type-fire": "var(--fire)",
+        "type-fighting": "var(--fire)",
+        "type-poison": "var(--poison)",
         "type-water": "var(--water)",
+        "type-electric": "var(--water)",
         "type-bug": "var(--bug)",
         "type-normal": "var(--normal)",
+        "type-ground": "var(--ground)",
         "type-default": "var(--default)",
         "main-bg": "var(--main-bg)",
         "black-a2": "var(--black-a2)",

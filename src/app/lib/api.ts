@@ -19,10 +19,12 @@ export const getPokemonData = async (id:number|string) => {
 }
 
 
-export const getPokemons = async (limit:number = 120) => {
+export const getPokemons = async (limit:number = 120, page: number = 0) => {
   const blackTextColorTypes = ['bug']
+  const supportedTypes = ['grass','fire','fighting','poison','water','electric','bug','normal','ground']
 
-  return fetcher(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`)
+  const offset = page ? `&offset=${page*limit}` : ''
+  return fetcher(`https://pokeapi.co/api/v2/pokemon?limit=${limit}${offset}`)
     .then(r => {
       if (r.error) {
         return {error: r.error?.message || JSON.stringify(r.error)}
@@ -35,10 +37,9 @@ export const getPokemons = async (limit:number = 120) => {
         }
 
         const types = data?.types?.map(t => ({name:t.type.name})) || []
-        const firstType = (types[0]?.name || 'default').toLowerCase()
+        const firstType = ((supportedTypes.includes(types[0]?.name) && types[0].name) || 'default').toLowerCase()
         const avatar = data?.sprites?.front_default || '/no-image.png'
 
-        let textColor = undefined
 
         return {
           ...p,

@@ -21,7 +21,6 @@ const usePokemon = (id:number) => {
         if (r.error) {
           setError(r.error)
         }
-        console.log('r',r);
         setData(r)
       })
       .finally(() => {

@@ -5,6 +5,8 @@
   --fire: #E77874;
   --water: #70A1F3;
   --bug: #FFFFFF;
+  --poison: #F7CB49;
   --normal: #9B8887;
+  --ground: var(--normal);
   --default: var(--normal);
 }
