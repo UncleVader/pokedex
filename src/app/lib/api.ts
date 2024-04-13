@@ -20,6 +20,8 @@ export const getPokemonData = async (id:number|string) => {
 
 
 export const getPokemons = async (limit:number = 120) => {
+  const blackTextColorTypes = ['bug']
+
   return fetcher(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`)
     .then(r => {
       if (r.error) {
@@ -31,16 +33,20 @@ export const getPokemons = async (limit:number = 120) => {
         if (data.error) {
           return {error: data.error}
         }
+
         const types = data?.types?.map(t => ({name:t.type.name})) || []
         const firstType = (types[0]?.name || 'default').toLowerCase()
         const avatar = data?.sprites?.front_default || '/no-image.png'
+
+        let textColor = undefined
 
         return {
           ...p,
           id,
           types,
           avatar,
-          color: firstType
+          color: firstType,
+          textBlack: blackTextColorTypes.includes(firstType)
         }
       })
     })

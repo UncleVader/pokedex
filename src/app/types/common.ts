@@ -8,5 +8,6 @@ export interface IPokemon {
   url: string;
   types: IPType[];
   avatar: string;
-  color: string
+  color: string;
+  textBlack: boolean;
 }

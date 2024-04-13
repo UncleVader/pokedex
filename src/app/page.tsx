@@ -3,7 +3,7 @@ import PokemonsList from "@/app/components/ui/PokemonsList";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col p-8 bg-main-bg">
+    <main className="flex min-h-screen flex-col p-8 bg-main-bg gap-8">
       <div className="flex justify-between items-center">
         <h1>Pokedex</h1>
         <SearchForm />

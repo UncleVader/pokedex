@@ -6,13 +6,15 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   safelist: [
+    'bg-type-water-500',
     {
-      pattern: /bg-type-(grass|fire|water|bug|normal|default)/,
+      pattern: /bg-type-(grass|fire|water|bug|normal|default).?/,
     }
   ],
   theme: {
     extend: {
       colors: {
+        "white-100": "rgba(255,255,255,.2)",
         "type-grass": "var(--grass)",
         "type-fire": "var(--fire)",
         "type-water": "var(--water)",
@@ -20,6 +22,7 @@ const config: Config = {
         "type-normal": "var(--normal)",
         "type-default": "var(--default)",
         "main-bg": "var(--main-bg)",
+        "black-a2": "var(--black-a2)",
         "black-a5": "var(--black-a5)",
         "black-a8": "var(--black-a8)",
         "black-a9": "var(--black-a9)",

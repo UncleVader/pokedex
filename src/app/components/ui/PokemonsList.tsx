@@ -12,7 +12,7 @@ const PokemonsList = () => {
       {
         isLoading && <>Loading...</> ||
         error && <>Error: {error}</> ||
-        <div className={"grid grid-cols-4 gap-8"}>
+        <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"}>
           {pokemons.map(p => (<PokemonListItem key={p.id} item={p}/>))}
         </div>
       }
