@@ -5,9 +5,20 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    {
+      pattern: /bg-type-(grass|fire|water|bug|normal|default)/,
+    }
+  ],
   theme: {
     extend: {
       colors: {
+        "type-grass": "var(--grass)",
+        "type-fire": "var(--fire)",
+        "type-water": "var(--water)",
+        "type-bug": "var(--bug)",
+        "type-normal": "var(--normal)",
+        "type-default": "var(--default)",
         "main-bg": "var(--main-bg)",
         "black-a5": "var(--black-a5)",
         "black-a8": "var(--black-a8)",

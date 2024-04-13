@@ -1,4 +1,5 @@
 import {IPokemon} from "@/app/types/common";
+import async from "async"
 
 const fetcher = (url:string) => {
   return fetch(url,{
@@ -13,15 +14,34 @@ const fetcher = (url:string) => {
     })
 }
 
+export const getPokemonData = async (id:number|string) => {
+  return fetcher(`https://pokeapi.co/api/v2/pokemon/${id}`)
+}
+
+
 export const getPokemons = async (limit:number = 120) => {
   return fetcher(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`)
     .then(r => {
       if (r.error) {
         return {error: r.error?.message || JSON.stringify(r.error)}
       }
-      return r.results.map((p:IPokemon) => {
+      return async.mapLimit(r.results, 5, async (p:IPokemon) => {
         const id = p.url.split('/').filter(e=>e).pop()
-        return {...p, id}
+        const data = await getPokemonData(id)
+        if (data.error) {
+          return {error: data.error}
+        }
+        const types = data?.types?.map(t => ({name:t.type.name})) || []
+        const firstType = (types[0]?.name || 'default').toLowerCase()
+        const avatar = data?.sprites?.front_default || '/no-image.png'
+
+        return {
+          ...p,
+          id,
+          types,
+          avatar,
+          color: firstType
+        }
       })
     })
 }

@@ -1,3 +1,9 @@
 :root {
-  --main-bg: #F3F4F6
+  --main-bg: #F3F4F6;
+  --grass: #5FC169;
+  --fire: #E77874;
+  --water: #70A1F3;
+  --bug: #FFFFFF;
+  --normal: #9B8887;
+  --default: var(--normal);
 }

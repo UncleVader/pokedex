@@ -1,20 +1,19 @@
 'use client'
 import useStore from "@/app/store";
-import {useEffect} from "react";
 import usePokemons from "@/app/hooks/usePokemons";
+import PokemonListItem from "@/app/components/ui/PokemonListItem/PokemonListItem";
 
 const PokemonsList = () => {
-  const {isLoading, error, pokemons} = useStore()
-
   usePokemons()
+  const {isLoading, error, pokemons} = useStore()
 
   return(
     <>
       {
         isLoading && <>Loading...</> ||
         error && <>Error: {error}</> ||
-        <div>
-          {pokemons.map(p => (<div key={p.id}>{p.id}</div>))}
+        <div className={"grid grid-cols-4 gap-8"}>
+          {pokemons.map(p => (<PokemonListItem key={p.id} item={p}/>))}
         </div>
       }
     </>
