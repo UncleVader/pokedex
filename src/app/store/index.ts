@@ -4,12 +4,14 @@ import {getPokemons} from "@/app/lib/api";
 
 interface IState {
   pokemons: IPokemon[];
+  filtered: IPokemon[];
   isLoading: boolean;
   error: string;
 }
 
 const initialState: IState = {
   pokemons: [],
+  filtered: [],
   isLoading: false,
   error: ''
 }
@@ -20,6 +22,7 @@ interface IActions {
   setIsLoading: (isLoading: boolean) => void;
   setError: (error: string) => void;
   setPokemons: (pokemons: IPokemon[]) => void;
+  setFiltered: (filtered: IPokemon[]) => void;
 }
 
 type TStore = IState & IActions;
@@ -46,7 +49,10 @@ const useStore = create<TStore>((set, get) =>
       set((state) => ({...state, error}))
     },
     setPokemons: (pokemons) => {
-      set((state) => ({...state, pokemons}))
+      set((state) => ({...state, pokemons, filtered: pokemons}))
+    },
+    setFiltered: (filtered) => {
+      set((state) => ({...state, filtered}))
     },
   })
 )
