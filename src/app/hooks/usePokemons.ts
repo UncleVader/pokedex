@@ -4,14 +4,20 @@ import {useEffect, useRef} from "react";
 import {IPokemon} from "@/app/types/common";
 
 const usePokemons = () => {
-  const {setIsLoading, setError, setPokemons, page, setPage, pokemons} = useStore()
-  const initStarted = useRef(false)
+  const {
+    setIsLoading,
+    setError,
+    setPokemons,
+    page,
+    lastFetchedPage,
+    setPage,
+    setLastFetchedPage,
+    pokemons} = useStore()
 
   useEffect(() => {
-    if (initStarted.current && !page) {
+    if (lastFetchedPage === page) {
       return
     }
-    initStarted.current = true
 
     setIsLoading(true)
     getPokemons(30, page)
@@ -21,6 +27,7 @@ const usePokemons = () => {
         } else if (Array.isArray(r.data)) {
           const pokArray = r.data.filter(d => !d?.error) as IPokemon[]
           setPokemons(pokemons.concat(pokArray))
+          setLastFetchedPage(page)
         }
       })
       .finally(() => {

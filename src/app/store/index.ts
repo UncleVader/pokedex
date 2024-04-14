@@ -5,6 +5,7 @@ interface IState {
   pokemons: IPokemon[];
   filtered: IPokemon[];
   page: number;
+  lastFetchedPage: number;
   isLoading: boolean;
   error: string;
 }
@@ -13,6 +14,7 @@ const initialState: IState = {
   pokemons: [],
   filtered: [],
   page: 0,
+  lastFetchedPage: -1,
   isLoading: false,
   error: ''
 }
@@ -24,6 +26,7 @@ interface IActions {
   setPokemons: (pokemons: IPokemon[]) => void;
   setFiltered: (filtered: IPokemon[]) => void;
   setPage: (page: number) => void;
+  setLastFetchedPage: (lastFetchedPage: number) => void;
 }
 
 type TStore = IState & IActions;
@@ -47,6 +50,9 @@ const useStore = create<TStore>((set, get) =>
     },
     setPage: (page) => {
       set((state) => ({...state, page}))
+    },
+    setLastFetchedPage: (lastFetchedPage) => {
+      set((state) => ({...state, lastFetchedPage}))
     },
   })
 )
