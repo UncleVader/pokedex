@@ -1,5 +1,6 @@
 'use client'
 import usePokemon from "@/app/pokemon/[id]/usePokemon";
+import Image from "next/image";
 
 export default function Page({params: {id}}: {
   params: { id: string }
@@ -43,7 +44,12 @@ export default function Page({params: {id}}: {
             </div>
           </div>
           <div className="p-4">
-            <img src={data.sprites.front_default} alt={data.name}/>
+            <Image
+              width={200}
+              height={200}
+              src={data.sprites.front_default}
+              alt={data.name}
+            />
           </div>
 
         </div> ||

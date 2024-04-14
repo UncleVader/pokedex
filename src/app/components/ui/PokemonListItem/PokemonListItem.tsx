@@ -5,6 +5,7 @@ import {cn} from "@/app/lib/utils";
 import PokemonFeatures from "@/app/components/ui/PokemonListItem/PokemonFeatures";
 import IdBadge from "@/app/components/ui/PokemonListItem/IdBadge";
 import { useRouter } from 'next/navigation'
+import Image from "next/image";
 
 interface IProps {
   item: IPokemon
@@ -37,7 +38,9 @@ const PokemonListItem: FC<IProps> = ({item}) => {
         <PokemonFeatures item={item}/>
       </div>
       <div className={"flex-[0_0_50px]"}>
-        <img
+        <Image
+          width={50}
+          height={50}
           className={"block w-full"}
           src={item.avatar} alt={item.name}/>
       </div>
