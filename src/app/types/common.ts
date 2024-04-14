@@ -2,14 +2,14 @@ interface IPType {
   name: string
 }
 
-interface IPAbility {
+export interface IPAbility {
   ability: {
     name: string;
     url: string;
   }
 }
 
-interface IPStat {
+export interface IPStat {
   base_stat: number;
   effort: number;
   stat: {
