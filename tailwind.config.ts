@@ -35,6 +35,7 @@ const config: Config = {
         "black-a2": "0 0 0 1px var(--black-a2)",
         "black-a9": "0 0 0 1px var(--black-a9)",
         "input-focus": "0 0 0 2px var(--black-a5)",
+        'pokebox': "0px 0px 5px 5px rgba(204,204,204,0.75)"
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

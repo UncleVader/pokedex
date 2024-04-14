@@ -1,6 +1,7 @@
 'use client'
 import usePokemon from "@/app/pokemon/[id]/usePokemon";
 import Image from "next/image";
+import Loader from "@/app/components/ui/Loader";
 
 export default function Page({params: {id}}: {
   params: { id: string }
@@ -9,21 +10,27 @@ export default function Page({params: {id}}: {
 
   return (
     <main className="flex min-h-screen flex-col p-8 bg-main-bg gap-8">
+      {isLoading && <Loader/>}
       {
-        isLoading && <>Loading...</> ||
         error && <>Error: {error}</> ||
         data &&
-        <div className={"border rounded-xl p-6 w-[500px] max-w-full mx-auto flex flex-wrap sm:flex-nowrap"}>
+        <div className={"border rounded-xl p-6 w-[600px] max-w-full mx-auto flex flex-wrap sm:flex-nowrap bg-white"}>
           <div className="flex flex-col">
             <h1 className={"mb-4"}>{data.name}</h1>
 
-            <div className="flex gap-4">
+            <div className="flex gap-4 p-2 border rounded-xl">
               {data?.abilities?.length &&
                 <div className={"flex flex-col gap-2"}>
                   <h2>Abilities:</h2>
                   <ul>
                     {data.abilities.map((a, i) => (
-                      <li key={i}><a href={a.ability.url} target="_blank">{a.ability.name}</a></li>
+                      <li key={i}>
+                        <a
+                          href={a.ability.url}
+                          target="_blank"
+                          className={"hover:underline"}
+                        >{a.ability.name}</a>
+                      </li>
                     ))
                     }
                   </ul>
@@ -35,7 +42,13 @@ export default function Page({params: {id}}: {
                   <h2>Stats:</h2>
                   <ul>
                     {data.stats.map((s, i) => (
-                        <li key={i}><a href={s.stat.url} target="_blank">{s.stat.name} - {s.base_stat}</a></li>
+                        <li key={i}>
+                          <a
+                            href={s.stat.url}
+                            target="_blank"
+                            className={"hover:underline"}
+                          >{s.stat.name} - {s.base_stat}</a>
+                        </li>
                       )
                     )}
                   </ul>

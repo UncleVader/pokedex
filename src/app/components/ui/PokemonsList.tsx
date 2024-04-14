@@ -25,7 +25,7 @@ const PokemonsList = () => {
               <b>Yay! You have seen it all</b>
             </p>
           }
-          className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 pt-8"}
+          className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 p-5 -m-5"}
         >
           {filtered.map((p, i) => (<PokemonListItem key={i} item={p}/>))}
         </InfiniteScroll>

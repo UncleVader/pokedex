@@ -22,7 +22,7 @@ const PokemonListItem: FC<IProps> = ({item}) => {
     <div
       className={
         cn(
-          "p-4 flex items-center gap-4 rounded-xl justify-between relative cursor-pointer",
+          "p-4 flex items-center gap-4 rounded-xl justify-between relative cursor-pointer transition hover:shadow-pokebox",
           "bg-type-" + item.color
         )
       }
